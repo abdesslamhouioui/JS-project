@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function computerPlay(){
+            const list=['Rock', 'Paper','Scissors']
+            return list[Math.floor(Math.random()*3)]
+        }
+        // console.log(computerPlay())
+        function playerSelection(selection){
+            let word=selection[0].toUpperCase()+selection.slice(1).toLowerCase();
+            return word
+        }
+        // console.log(playerSelection('roCk'))
+        function playRound(playerSelection,computerSelection){
+            if(playerSelection=='Rock' && computerSelection=='Scissors') return 'You win! Rock beats Scissors'
+            else if(playerSelection=='Scissors' && computerSelection=='Paper') return 'You win! Scissors beats Paper'
+            else if(playerSelection=='Paper' && computerSelection=='Rock') return 'You win! Paper beats Rock'
+            else if(playerSelection=='Rock' && computerSelection=='Rock') return 'Try again'
+            else if(playerSelection=='Scissors' && computerSelection=='Scissors') return 'Try again'
+            else if(playerSelection=='Paper' && computerSelection=='Paper') return 'Try again'
+            else if(playerSelection=='Scissors' && computerSelection=='Rock') return 'You lose! Rock beats Scissors'
+            else if(playerSelection=='Paper' && computerSelection=='Scissors') return 'You lose! Scissors beats Paper'
+            else if(playerSelection=='Rock' && computerSelection=='Paper') return 'You lose! Paper beats Rock'
+        }
+        // const PlayerSelection=playerSelection('rock')
+        // const computerSelection=computerPlay()
+        // console.log(playRound(PlayerSelection,computerSelection))
+
+
+        // 5 round game
+        function playRound1(playerSelection,computerSelection,arr){
+            if(playerSelection=='Rock' && computerSelection=='Scissors') arr[0]++
+            else if(playerSelection=='Scissors' && computerSelection=='Paper') arr[0]++
+            else if(playerSelection=='Paper' && computerSelection=='Rock') arr[0]++
+            else if(playerSelection=='Scissors' && computerSelection=='Rock') arr[1]++
+            else if(playerSelection=='Paper' && computerSelection=='Scissors') arr[1]++
+            else if(playerSelection=='Rock' && computerSelection=='Paper') arr[1]++
+            return arr
+        }
+        function game(){
+           let arr=[0,0]
+            for(let i=0;i<5;i++){
+            let playerSelection1=playerSelection(prompt('Enter your choice'))
+            let computerSelection=computerPlay()
+                playRound1(playerSelection1,computerSelection,arr)
+            }
+            if(arr[1]>arr[0])return 'You lose'
+            else if(arr[0]>arr[1])return 'You win'
+            else return 'Equals'
+        }
+        // console.log(game())
+    </script>
+</body>
+</html>
